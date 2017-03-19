@@ -1,0 +1,4 @@
+/external/*
+*.directory*
+*~
+*.kdev4
