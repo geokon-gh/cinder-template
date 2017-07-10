@@ -40,11 +40,60 @@ set( OLD_CINDER_BLOCKS_SOURCES
 	${BLOCKS_DIR}/ImGui/src/CinderImGui.cpp
 	${BLOCKS_DIR}/ImGui/lib/imgui/imgui.cpp
 	${BLOCKS_DIR}/ImGui/lib/imgui/imgui_demo.cpp
-	${BLOCKS_DIR}/ImGui/lib/imgui/imgui_draw.cpp)
+	${BLOCKS_DIR}/ImGui/lib/imgui/imgui_draw.cpp
+	${BLOCKS_DIR}/Asio/src/ClientInterface.cpp
+    ${BLOCKS_DIR}/Asio/src/DispatcherInterface.cpp
+    ${BLOCKS_DIR}/Asio/src/ServerInterface.cpp
+    ${BLOCKS_DIR}/Asio/src/SessionInterface.cpp
+    ${BLOCKS_DIR}/Asio/src/TcpClient.cpp
+    ${BLOCKS_DIR}/Asio/src/TcpServer.cpp
+    ${BLOCKS_DIR}/Asio/src/TcpSession.cpp
+    ${BLOCKS_DIR}/Asio/src/UdpClient.cpp
+    ${BLOCKS_DIR}/Asio/src/UdpServer.cpp
+    ${BLOCKS_DIR}/Asio/src/UdpSession.cpp
+    ${BLOCKS_DIR}/Asio/src/WaitTimer.cpp)
 	
+
 set( SOURCES_FILES
     ${OLD_CINDER_BLOCKS_SOURCES}
-    ${APP_PATH}/src/cinderlights.cpp )
+    ${APP_PATH}/src/imgui_sample.cpp )
+ci_make_app(
+    APP_NAME    imgui_sample
+    INCLUDES    ${INCLUDES_FILES}
+    SOURCES     ${SOURCES_FILES}
+	CINDER_PATH ${CINDER_PATH}
+#    BLOCKS      ImGui
+    LIBRARIES   ${OpenCV_LIBS}
+)
+
+set( SOURCES_FILES
+    ${OLD_CINDER_BLOCKS_SOURCES}
+    ${APP_PATH}/src/udp_client_sample.cpp )
+ci_make_app(
+    APP_NAME    udp_client_sample
+    INCLUDES    ${INCLUDES_FILES}
+    SOURCES     ${SOURCES_FILES}
+	CINDER_PATH ${CINDER_PATH}
+#    BLOCKS      ImGui
+    LIBRARIES   ${OpenCV_LIBS}
+)
+
+set( SOURCES_FILES
+    ${OLD_CINDER_BLOCKS_SOURCES}
+    ${APP_PATH}/src/udp_server_sample.cpp )
+ci_make_app(
+    APP_NAME    udp_server_sample
+    INCLUDES    ${INCLUDES_FILES}
+    SOURCES     ${SOURCES_FILES}
+	CINDER_PATH ${CINDER_PATH}
+#    BLOCKS      ImGui
+    LIBRARIES   ${OpenCV_LIBS}
+)
+
+set( SOURCES_FILES
+    ${OLD_CINDER_BLOCKS_SOURCES}
+    ${APP_PATH}/src/cinderlights/GaussianWave.cpp
+    ${APP_PATH}/src/cinderlights/main.cpp )
 ci_make_app(
     APP_NAME    cinderlights
     INCLUDES    ${INCLUDES_FILES}
@@ -53,4 +102,3 @@ ci_make_app(
 #    BLOCKS      ImGui
     LIBRARIES   ${OpenCV_LIBS}
 )
-
