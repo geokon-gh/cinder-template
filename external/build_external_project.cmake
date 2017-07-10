@@ -4,7 +4,6 @@ function ( build_external_project_url
     PROJ                    # Project
     PROJ_FOLDER             # Project Location
     PROJ_URL                # Where to get project
-    PROJ_BUILD_FOLDER_NAME  # Build folder based on build typeforce_${PROJ}
     PROJ_BUILD_COMMAND)
 
     set(trigger_build_dir ${PROJ_FOLDER}/cmake-trigger-directory)
@@ -23,7 +22,7 @@ function ( build_external_project_url
         SOURCE_DIR          ${PROJ_FOLDER}/src
         URL                 ${PROJ_URL}
         DOWNLOAD_DIR        ${PROJ_FOLDER}/download-zip
-        BINARY_DIR          ${PROJ_FOLDER}/${PROJ_BUILD_FOLDER_NAME}
+        BINARY_DIR          ${CMAKE_BINARY_DIR}/external/${PROJ}
         BUILD_COMMAND       ${PROJ_BUILD_COMMAND}
         INSTALL_COMMAND \"\"
         CMAKE_ARGS ${ARGN}
@@ -53,7 +52,6 @@ function ( build_external_project_git
     PROJ_FOLDER             # Project Location
     PROJ_GIT_REPOSITORY
     PROJ_GIT_TAG
-    PROJ_BUILD_FOLDER_NAME # Build folder based on build type
     PROJ_BUILD_COMMAND)
 
     set(trigger_build_dir ${PROJ_FOLDER}/build-temp)
@@ -73,7 +71,7 @@ function ( build_external_project_git
         GIT_REPOSITORY      ${PROJ_GIT_REPOSITORY}
         GIT_TAG             ${PROJ_GIT_TAG}
         DOWNLOAD_DIR        ${PROJ_FOLDER}/download-git
-        BINARY_DIR          ${PROJ_FOLDER}/${PROJ_BUILD_FOLDER_NAME}
+        BINARY_DIR          ${CMAKE_BINARY_DIR}/external/${PROJ}
         BUILD_COMMAND       ${PROJ_BUILD_COMMAND}
         INSTALL_COMMAND \"\"
         CMAKE_ARGS ${ARGN}
