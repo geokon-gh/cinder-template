@@ -1,0 +1,6 @@
+[submodule "contrib/Cinder"]
+	path = contrib/Cinder
+	url = https://github.com/cinder/Cinder.git
+[submodule "contrib/OpenCV"]
+	path = contrib/OpenCV
+	url = https://github.com/opencv/opencv.git
