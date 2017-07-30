@@ -4,3 +4,9 @@
 [submodule "contrib/OpenCV"]
 	path = contrib/OpenCV
 	url = https://github.com/opencv/opencv.git
+[submodule "contrib/Cinder-Blocks/Cinder-ImGui"]
+	path = contrib/Cinder-Blocks/Cinder-ImGui
+	url = https://github.com/simongeilfus/Cinder-ImGui.git
+[submodule "contrib/Cinder-Blocks/Cinder-Asio"]
+	path = contrib/Cinder-Blocks/Cinder-Asio
+	url = https://github.com/BanTheRewind/Cinder-Asio.git

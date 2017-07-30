@@ -25,4 +25,6 @@ set(CINDER_BOOST_USE_SYSTEM ON CACHE BOOL "Cinder Option:")
 set(CINDER_VERBOSE ON CACHE BOOL "Cinder Verbose output")
 # otherwise uses some janky liboostfilesystem.a that is bundled with Cinder :/
 add_subdirectory(Cinder)
+add_subdirectory(Cinder-Blocks)
+
 
