@@ -12,8 +12,8 @@ add_subdirectory(src)
 #  OpenCV_INCLUDE_DIRS)
 
 set( SOURCES_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/cinderlights/GaussianWave.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/cinderlights/main.cpp )
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/GaussianWave.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp )
 
 add_executable(cinderlights ${SOURCES_FILES})
 target_link_libraries(cinderlights opencv_world cinder Cinder-ImGui Cinder-Asio)
