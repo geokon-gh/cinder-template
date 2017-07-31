@@ -28,23 +28,23 @@ public:
     void keyDown( KeyEvent key_event) override;
     
     // ASIO
-    UdpClientRef				m_client;    // the thing that connects
-    std::string					m_host;     // URL/IP
-    int32_t						m_port;    // Port number
+    UdpClientRef m_client; // the thing that connects
+    std::string m_host;    // URL/IP
+    int32_t m_port;        // Port number
     // on connection the client generates a session through this callback
-    void						onConnect( UdpSessionRef session );
-    UdpSessionRef				m_session;
+    void onConnect( UdpSessionRef session );
+    UdpSessionRef m_session;
     
-    void						onError( std::string err, size_t bytesTransferred );
-    void						onWrite( size_t bytesTransferred );
+    void onError( std::string err, size_t bytesTransferred );
+    void onWrite( size_t bytesTransferred );
     
     void connectToESP();
     void writeToESP();
-    int                    m_number_of_lights;
-    Color                  m_led_color;
-    std::string            m_ESP_IP;
+    int  m_number_of_lights;
+    Color m_led_color;
+    std::string m_ESP_IP;
     //    std::string            m_previous_ESP_IP;
-    bool                   m_sawtooth_brightness;
+    bool m_sawtooth_brightness;
     
     //gaussian stuff
     GaussianWave m_wave;
