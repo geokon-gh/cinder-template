@@ -1,3 +1,4 @@
+
 #include <stdlib.h>
 
 #include "cinder/app/App.h"
@@ -20,7 +21,7 @@ void Template::setup()
 {
 }
 void Template::update()
-{	
+{
 }
 void Template::draw()
 {

@@ -1,3 +1,4 @@
+
 execute_process(COMMAND git submodule update --recursive --init -- Cinder-ImGui
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -11,8 +12,6 @@ target_include_directories(Cinder-ImGui PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/Cinder-ImGui/lib/imgui)
 
 target_link_libraries(Cinder-ImGui cinder)
-
-
 
 execute_process(COMMAND git submodule update --recursive --init -- Cinder-Asio
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
@@ -34,5 +33,3 @@ target_include_directories(Cinder-Asio PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/Cinder-Asio/src/)
 
 target_link_libraries(Cinder-Asio cinder)
-
-
