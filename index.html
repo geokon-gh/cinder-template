@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>A template for Cinder projects</title>
+<!-- 2017-08-01 Tue 16:38 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="George Kontsevich" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://geokon-gh.github.io/static/worg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">A template for Cinder projects</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Intro</a></li>
+<li><a href="#sec-2">Starting the base CMakeLists.txt</a></li>
+<li><a href="#sec-3">The 3rd party libraries</a>
+<ul>
+<li><a href="#sec-3-1">OpenCV</a></li>
+<li><a href="#sec-3-2">Cinder</a></li>
+<li><a href="#sec-3-3">Cinder-Blocks</a></li>
+<li><a href="#sec-3-4">Adding Cinder-BLocks</a>
+<ul>
+<li><a href="#sec-3-4-1">ImgGui</a></li>
+<li><a href="#sec-3-4-2">Asio</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4">Finishing up the root CMakeLists.txt</a></li>
+<li><a href="#sec-5">Template main.cpp</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Intro</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This is a simple template that uses <code>CMake</code> and <code>gitsubmodules</code>. It's very easy to add additional CMake based libraries and Cinder-Blocks. I illustrate that by adding OpenCV and a couple of Cinder blocks
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Starting the base CMakeLists.txt</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+In around version 3 of CMake, the way we configure projects went through some fundamental changes, so most updated cmake projects start with a version requirement before declaring the name of the generated project
+</p>
+<div class="org-src-container">
+
+<pre class="src src-cmake"><span style="color: #ef2929;">cmake_minimum_required</span>(VERSION 3.0)
+<span style="color: #ef2929;">project</span>(cinder-template)
+</pre>
+</div>
+<p>
+Next I want the build system to export its compilation commands into the build directory. These are consumed by <code>rtags</code> and <code>emacs</code> to enable things like code-navigation/completion. (see my emacs repository for more details on how that's used)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-cmake"><span style="color: #ef2929;">set</span>(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE BOOL <span style="color: #ff1f8b;">"Export compile commands for Rtags"</span>)
+</pre>
+</div>
+<p>
+Finally we need to bring in the 3rd party libraries through the gitsubmodule system. 3rd party libraries will be put into a separate folder (mine is <code>contrib/</code>) and will get pulled in with git
+</p>
+<div class="org-src-container">
+
+<pre class="src src-cmake"><span style="color: #ef2929;">find_package</span>(Git REQUIRED)
+<span style="color: #ef2929;">add_subdirectory</span>(contrib)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">The 3rd party libraries</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Inside of <code>contrib/</code> we will have another <code>CMakeLists.txt</code>. First it will pull in the submodules.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-cmake"><span style="color: #ef2929;">execute_process</span>(COMMAND git submodule update --recursive --init -- Cinder
+  WORKING_DIRECTORY ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>})
+<span style="color: #ef2929;">execute_process</span>(COMMAND git submodule update --recursive --init -- OpenCV
+  WORKING_DIRECTORY ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>})
+</pre>
+</div>
+<p>
+Unfortunately additional submodules need to be added by hand. There is a <code>.gitmodules</code> in the repository root directory - but just adding lines to it isn't sufficient. Git keeps track of them somewhere internally as well.
+</p>
+
+<p>
+After that we just configure and add each library
+</p>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">OpenCV</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+For OpenCV I turn off generating any additional executables (for tests, examples and apps). In addition I turn off GUI related stuff (QT/GTK) and platform specific stuff (IPP will trigger downloading extra files - yuck!). Building <code>opencv_world</code> is a convenience thing. It makes it easier to link to all of OpenCV at once later in the configuration. You can instead link to the particular opencv library you are using
+</p>
+<div class="org-src-container">
+
+<pre class="src src-cmake"><span style="color: #ef2929;">set</span>(ENABLE_PRECOMPILED_HEADERS OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(BUILD_EXAMPLES OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(BUILD_PERF_TESTS OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(BUILD_TESTS OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(BUILD_opencv_apps OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(BUILD_opencv_python2 OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(BUILD_opencv_world ON CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(WITH_CUDA OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(WITH_CUFFT OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(WITH_GTK OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(WITH_IPP OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(WITH_IPP_A OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(WITH_MATLAB OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">set</span>(WITH_QT OFF CACHE BOOL <span style="color: #ff1f8b;">"OpenCV Option:"</span>)
+<span style="color: #ef2929;">add_subdirectory</span>(OpenCV)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Cinder</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Cinder has fewer configurations. I just add more verbose output for CMake (to see if anything is going wrong) and switch to using my system's boost. Cinder comes with some prebuilt older version of boost which has caused me problems in the past (maybe there is a good reason it's there that I'm missing.. but would it even work on ARM?)
+</p>
+<div class="org-src-container">
+
+<pre class="src src-cmake"><span style="color: #ef2929;">set</span>(CINDER_BOOST_USE_SYSTEM ON CACHE BOOL <span style="color: #ff1f8b;">"Cinder Option:"</span>)
+<span style="color: #ef2929;">set</span>(CINDER_VERBOSE ON CACHE BOOL <span style="color: #ff1f8b;">"Cinder Verbose output"</span>)
+<span style="color: #ef2929;">add_subdirectory</span>(Cinder)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Cinder-Blocks</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Cinder-Blocks aren't magical. They're simply other libraries that need to link to Cinder. So you need to make sure to add them to CMake after you've added Cinder itself. I have them places in a subdirectory called Cinder-Blocks
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">Adding Cinder-BLocks</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Most Cinder-Blocks don't come with a CMakeLists.txt, so unfortunately adding them is a bit of a manual process. I've added the <code>Imgui</code> and <code>Asio</code> to illustrate the process. Fundamentally it's very similar to what we've done with OpenCV and Cinder itself. You put with git and then manually build the library. The extra step is then linking the block with cinder.
+</p>
+</div>
+<div id="outline-container-sec-3-4-1" class="outline-4">
+<h4 id="sec-3-4-1">ImgGui</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<div class="org-src-container">
+
+<pre class="src src-cmake"><span style="color: #ef2929;">execute_process</span>(COMMAND git submodule update --recursive --init -- Cinder-ImGui
+  WORKING_DIRECTORY ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>})
+
+<span style="color: #ef2929;">add_library</span>(Cinder-ImGui
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-ImGui/src/CinderImGui.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-ImGui/lib/imgui/imgui.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-ImGui/lib/imgui/imgui_demo.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-ImGui/lib/imgui/imgui_draw.cpp)
+<span style="color: #ef2929;">target_include_directories</span>(Cinder-ImGui PUBLIC
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-ImGui/include
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-ImGui/lib/imgui)
+
+<span style="color: #ef2929;">target_link_libraries</span>(Cinder-ImGui cinder)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-4-2" class="outline-4">
+<h4 id="sec-3-4-2">Asio</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<div class="org-src-container">
+
+<pre class="src src-cmake"><span style="color: #ef2929;">execute_process</span>(COMMAND git submodule update --recursive --init -- Cinder-Asio
+  WORKING_DIRECTORY ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>})
+
+<span style="color: #ef2929;">add_library</span>(Cinder-Asio
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/ClientInterface.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/DispatcherInterface.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/ServerInterface.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/SessionInterface.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/TcpClient.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/TcpServer.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/TcpSession.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/UdpClient.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/UdpServer.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/UdpSession.cpp
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/WaitTimer.cpp)
+
+<span style="color: #ef2929;">target_include_directories</span>(Cinder-Asio PUBLIC
+  ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/Cinder-Asio/src/)
+
+<span style="color: #ef2929;">target_link_libraries</span>(Cinder-Asio cinder)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Finishing up the root CMakeLists.txt</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Now that we have all the libraries and cinder blocks, we just need to point to our <code>.cpp</code> files and link the libraries and we're done!
+</p>
+<div class="org-src-container">
+
+<pre class="src src-cmake"><span style="color: #ef2929;">set</span>( SOURCES_FILES
+    ${<span style="color: #ff8700;">CMAKE_CURRENT_SOURCE_DIR</span>}/src/main.cpp )
+
+  <span style="color: #ef2929;">add_executable</span>(cinder-template ${<span style="color: #ff8700;">SOURCES_FILES</span>})
+<span style="color: #ef2929;">target_link_libraries</span>(cinder-template opencv_world cinder Cinder-ImGui Cinder-Asio)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Template main.cpp</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+The normal stucture of a Cinder project can be seen in all the samples that are provided with Cinder. Here is the general skeleton which I'm placing in <code>/src/main.cpp</code>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-cpp"><span style="color: #b218b2;">#include</span> <span style="color: #ff1f8b;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #b218b2;">#include</span> <span style="color: #ff1f8b;">"cinder/app/App.h"</span>
+<span style="color: #b218b2;">#include</span> <span style="color: #ff1f8b;">"cinder/app/RendererGl.h"</span>
+<span style="color: #b218b2;">#include</span> <span style="color: #ff1f8b;">"cinder/gl/gl.h"</span>
+
+<span style="color: #00af00;">using</span> <span style="color: #00af00;">namespace</span> <span style="color: #1f5bff;">ci</span>;
+<span style="color: #00af00;">using</span> <span style="color: #00af00;">namespace</span> <span style="color: #1f5bff;">ci</span>::<span style="color: #1f5bff;">app</span>;
+
+<span style="color: #00af00;">class</span> <span style="color: #18b2b2;">Template</span> : <span style="color: #00af00;">public</span> <span style="color: #18b2b2;">App</span> {
+<span style="color: #00af00;">public</span>:
+    <span style="color: #18b2b2;">void</span> <span style="color: #ef2929;">setup</span>() <span style="color: #00af00;">override</span>;
+    <span style="color: #18b2b2;">void</span> <span style="color: #ef2929;">update</span>() <span style="color: #00af00;">override</span>;
+    <span style="color: #18b2b2;">void</span> <span style="color: #ef2929;">draw</span>() <span style="color: #00af00;">override</span>;
+    <span style="color: #18b2b2;">void</span> <span style="color: #ef2929;">cleanup</span>() <span style="color: #00af00;">override</span>;
+
+};
+
+<span style="color: #18b2b2;">void</span> <span style="color: #1f5bff;">Template</span>::<span style="color: #ef2929;">setup</span>()
+{
+}
+<span style="color: #18b2b2;">void</span> <span style="color: #1f5bff;">Template</span>::<span style="color: #ef2929;">update</span>()
+{       
+}
+<span style="color: #18b2b2;">void</span> <span style="color: #1f5bff;">Template</span>::<span style="color: #ef2929;">draw</span>()
+{
+}
+<span style="color: #18b2b2;">void</span> <span style="color: #1f5bff;">Template</span>::<span style="color: #ef2929;">cleanup</span>()
+{
+}
+CINDER_APP( Template , RendererGl)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: George Kontsevich</p>
+<p class="date">Created: 2017-08-01 Tue 16:38</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
