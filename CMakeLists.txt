@@ -7,10 +7,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE BOOL "Export compile commands for Rta
 find_package(Git REQUIRED)
 add_subdirectory(contrib)
 
-set( SOURCES_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp )
-
-add_executable(cinder-template ${SOURCES_FILES})
+add_executable(cinder-template 
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp )
 target_link_libraries(cinder-template 
   opencv_world 
   cinder 
