@@ -3,10 +3,10 @@ cmake_minimum_required(VERSION 3.0)
 # HUNTER dependencency manager
 include("cmake/HunterGate.cmake")
 HunterGate(
-  URL "https://github.com/ruslo/hunter/archive/v0.18.58.tar.gz"
-  SHA1 "3b39effc5ee1af4ef7487eabb1b0a7a7e10a7b3e"
-  LOCAL
-)
+    URL "https://github.com/ruslo/hunter/archive/v0.19.167.tar.gz"
+    SHA1 "244a13718ea2e6c0c8998d15559c7e459f615708"
+    LOCAL
+    )
 
 
 project(cinder-template)
@@ -21,6 +21,7 @@ find_package(Git REQUIRED)
 hunter_add_package(OpenCV)
 find_package(OpenCV CONFIG REQUIRED)
 
+include_directories("/usr/include/gstreamer-1.0")
 hunter_add_package(Cinder)
 
 add_executable(cinder-template 
