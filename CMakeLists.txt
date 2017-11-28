@@ -13,22 +13,10 @@ project(cinder-template)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE BOOL "Export compile commands for Rtags")
 
-find_package(Git REQUIRED)
-
-#hunter_add_package(Boost COMPONENTS regex chrono date_time filesystem system thread)
-#find_package(Boost CONFIG REQUIRED)
-
-hunter_add_package(OpenCV)
-find_package(OpenCV CONFIG REQUIRED)
-
-include_directories("/usr/include/gstreamer-1.0")
 hunter_add_package(Cinder)
-
+find_package(Cinder)
 add_executable(cinder-template 
   ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp )
 target_link_libraries(cinder-template 
-  OpenCV::opencv_world
   Cinder::cinder)
 
-#  Cinder-ImGui 
-#  Cinder-Asio)
